@@ -4,5 +4,5 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
+Mình là Võ Tá Quang Nhật, hiện đang là sinh viên ngành DS&AI của SoICT – HUST.
+Đây là nơi mình viết. Phần lớn nội dung sẽ là soạn lại kiến thức đã học được.
