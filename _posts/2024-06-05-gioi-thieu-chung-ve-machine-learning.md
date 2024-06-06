@@ -6,11 +6,9 @@ categories:
 tags:
   - machine_learning
 author: votaquangnhat
+description: Series bài viết này tổng hợp những gì mình học được từ thầy Khoát ở SoICT và các tài liệu online khác.
 ---
 
-Series bài viết này tổng hợp những gì mình học được từ thầy Khoát ở SoICT và các tài liệu online khác.
-
----
 Ở bài viết đầu tiên, chúng ta sẽ nói rất sơ lược về Machine Learning.
 ## Định nghĩa
 
