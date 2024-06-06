@@ -1,6 +1,6 @@
 ---
 title: 1. Supervised Learning
-date: 2024-06-06 09:06:65 +0700
+date: 2024-06-06 09:06:00 +0700
 categories:
   - Machine Learning
 tags:
