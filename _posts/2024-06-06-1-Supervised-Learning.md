@@ -9,7 +9,7 @@ authors: votaquangnhat
 description: Ở bài viết này, ta sẽ phát biểu bài toán Supervised Learning và lần lượt đề cập vài vấn đề từ nó. Cuối cùng sẽ tổng kết lại quy trình.
 math: true
 ---
-Last update: 2024-06-07 00:42:01 +0700
+
 ## 1. Khái niệm mở đầu
 
 Cho trước tập dữ liệu có $n$ phần tử
