@@ -71,14 +71,14 @@ Ngoài ra, kNN cũng gặp một vấn đề, là vấn đề chung cho các thu
 
 Nhắc lại về giả định mà ta đặt ra khi dùng kNN: những điểm (gần) giống nhau thì có label như nhau. Cụ thể hơn, thước đo cho sự (gần) giống nhau chính là độ gần, đo bằng metric. Tuy nhiên, khi ở trong một không gian rất nhiều chiều, những điểm trong dataset dường như lại không hề gần nhau.
 
-Để hiểu hơn về curse of dimensionality, ta hãy bắt đầu với 1-d. Không mất tính tổng quát, giả sử ta có các điểm dữ liệu phân bố đều và độc lập (i.i.d), nằm trên đoạn $[0;1]$. Ở hai đầu biên, ta gọi 2 khoảng $\varepsilon > 0$ như hình dưới là _rìa_.
+Để hiểu hơn về curse of dimensionality, ta hãy bắt đầu với 1-d. Không mất tính tổng quát, giả sử ta có các điểm dữ liệu phân bố đều và độc lập, nằm trên đoạn $[0;1]$. Ở hai đầu biên, ta gọi 2 khoảng $\varepsilon > 0$ như hình dưới là _rìa_.
 
 ![curse of 1d dark mod](https://raw.githubusercontent.com/nhatquang510/media/main/vtqn-blog/Attachments/curse-of-1d(dark).png){: .dark }
 ![curse of 1d light mode](https://raw.githubusercontent.com/nhatquang510/media/main/vtqn-blog/Attachments/curse-of-1d(light).png){: .light }
 
 Rõ ràng, xác suất mà điểm dữ liệu đã cho **không nằm ở rìa** là $1-2\varepsilon$. Với $\varepsilon$ rất nhỏ, ta thấy _một cách trực quan_ rằng rất khó để mà data của chúng ta nằm ở rìa.
 
-Giờ hãy xét ở 2-d, khi đó data của chúng ta là i.i.d và nằm ở trong $[0;1]^2$.
+Giờ hãy xét ở 2-d, khi đó data của chúng ta là phân bố đều và nằm ở trong $[0;1]^2$.
 
 ![curse of 2d dark mod](https://raw.githubusercontent.com/nhatquang510/media/main/vtqn-blog/Attachments/curse-of-2d(dark).png){: .dark }
 ![curse of 2d light mode](https://raw.githubusercontent.com/nhatquang510/media/main/vtqn-blog/Attachments/curse-of-2d(light).png){: .light }
@@ -105,7 +105,7 @@ Chứng minh toán học cho hiện tượng này ở đây: (cập nhật sau k
 Như vậy, kNN hoàn toàn không thể ứng dụng trong thực tế ư? Bởi số chiều của data trong thực tế là rất lớn.
 > Ví dụ như với một tập các hình ảnh hoa oải hương có kích thước 100x100, số chiều của dữ liệu là 30 000 (giả sử mỗi điểm là 1 bộ 3 (r,g,b) ).
 
-Thật ra không phải là không ứng dụng được. Bởi với curse of dimensionality, data là i.d.d - phân bố đều và độc lập. Còn thực tế, data của chúng ta không hề phân bố đều mà nằm trong một mặt phẳng (hoặc là một manifold) có $n$ chiều nào đó mà $n$ nhỏ hơn $d$ rất nhiều. Lúc này, **khoảng cách không bị mất đi ý nghĩa do sự tăng số chiều nữa.**
+Thật ra không phải là không ứng dụng được. Bởi với curse of dimensionality, data là phân bố đều và độc lập. Còn thực tế, data của chúng ta không hề phân bố đều mà nằm trong một mặt phẳng (hoặc là một manifold) có $n$ chiều nào đó mà $n$ nhỏ hơn $d$ rất nhiều. Lúc này, **khoảng cách không bị mất đi ý nghĩa do sự tăng số chiều nữa.**
 
 > Manifold là một khái niệm topology, có thể hiểu nôm na là khi ta nhìn cục bộ thì rất giống với không gian $n$ chiều. Ví dụ như chúng ta đang ở Trái Đất, một vật thể 3d. Nhưng chúng ta chỉ di chuyển trên bề mặt Trái Đất và Trái Đất quá lớn so với chúng ta, nên nhìn cục bộ có vẻ như Trái Đất phẳng (2d).
 
