@@ -15,6 +15,7 @@ Nhắc lại từ bài viết trước: **mọi bài toán machine learning đ�
 
 Với thuật toán k-nearest-neighbors (kNN), ta đã đặt ra một giả định rằng: những feature (gần) giống nhau thì có label giống nhau. Với bài toán classification dùng kNN, giả định đó được cụ thể thành: với feature dùng để test $x_t$, thì label của nó chính là label chiếm nhiều nhất trong tập gồm $k$ feature trong dataset gần $x_t$ nhất.
 
+
 Chính xác hơn, giả sử ta có một tập dữ liệu $\mathcal{D} \subseteq \mathcal{X} \times \mathcal{Y}$. Gọi $x$ là một điểm dữ liệu bất kỳ trong không gian $\mathcal{X} \times \mathcal{Y}$. Cho trước một metric (distance function) $d$, ta gọi $S_x$ là tập hợp gồm $k$ điểm trong $\mathcal{D}$ mà gần $x$ nhất, tức $S_x \in \mathcal{D}$ sao cho $|S_x| = k$ và đồng thời:
 
 $$\forall u \in \mathcal{D} \setminus S_x, \; d(x, u) \geq \max_{a, b \in S_x} d(a, b)$$
@@ -22,6 +23,7 @@ $$\forall u \in \mathcal{D} \setminus S_x, \; d(x, u) \geq \max_{a, b \in S_x} d
 Khi đó, hàm $h$ - một classifier được định nghĩa là:
 
 $$h(\mathbf{x})=\text{mode}(\{y'':(\mathbf{x}'',y'')\in S_\mathbf{x}\})$$
+
 trong đó $\text{mode}(\cdot)$ là hàm chọn ra label có số lần xuất hiện cao nhất.
 
 Một điểm đáng lưu ý khi sử dụng thuật toán này đó là việc chọn $k$ - gọi là một hyperparameter. Khi chọn $k$ nhỏ, ta có được bias thấp (đánh giá rất sát) và variance cao (nhạy cảm với nhiễu), vì thế rất dễ xảy ra overfitting. Còn khi $k$ lớn thì ngược lại, bias cao (tổng quát hơn) và variance thấp (ít nhạy cảm với nhiễu hơn).
@@ -52,8 +54,10 @@ $$d(\mathbf{x},\mathbf{y})=\max_i (|x_i-y_i|)$$
 > Chứng minh cho trường hợp $p \to \infty$:
 > Ta có đánh giá:
 > $$\left(\max_i(|x_i-y_i|^p)\right)^{1/p} \leq \left(\sum_{i=1}^n |x_i-y_i|^p\right)^{1/p} \leq \left(n\max_i(|x_i-y_i|^p)\right)^{1/p}$$
+> 
 > Hay:
 > $$\max_i(|x_i-y_i|) \leq \left(\sum_{i=1}^n |x_i-y_i|^p\right)^{1/p} \leq \max_i(|x_i-y_i|).n^{1/p}$$
+> 
 > Để ý $\lim_{p \to \infty} n^{\frac{1}{p}} = 1, \; \forall n \in \mathbb{N*}$, cho $p \to \infty$ trong đánh giá trên, ta có ngay điều phải chứng minh.
 
 Như vậy, ta đã hiểu khá rõ cách kNN classifier hoạt động.
@@ -84,7 +88,7 @@ Ta thấy _một cách trực quan_ rằng có vẻ như xác suất mà data c�
 Vậy sẽ như nào nếu số chiều $d$ rất lớn ($d \gg 0$) ? Khi đó, xác suất mà data của chúng ta không nằm ở rìa chính là $(1-2\varepsilon)^d \to 0$, tức là phần lớn data sẽ nằm ở rìa.
 
 > Hệ quả chính là **_phần lớn_ khoảng cách giữa 2 điểm bất kỳ là rất giống nhau** (đều là khoảng cách từ đầu này đến đầu kia).
-{: danger}
+{: .prompt-danger}
 
 Trực quan hơn, ta lấy ví dụ trong không gian 2 chiều tiếp. Giả sử các điểm dữ liệu của ta đều ở biên và phân bố đều. Lấy 1 điểm màu đỏ nằm ở rìa, rõ ràng quá nửa số data nằm xa điểm màu đỏ (bên ngoài đường tròn đỏ)
 
