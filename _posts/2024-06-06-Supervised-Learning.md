@@ -1,5 +1,5 @@
 ---
-title: 1. Supervised Learning
+title: Supervised Learning
 date: 2024-06-07 00:42:01 +0700
 categories:
   - Machine Learning
@@ -17,16 +17,16 @@ $$\mathcal{D} = \left\{ (x_i, y_i) | x_i \in \mathcal{X}, y_i \in \mathcal{Y}, i
 - $\mathcal{X}$ là một không gian $d$ chiều, được gọi là feature space. $x_i$ được gọi là một feature.
 - $\mathcal{Y}$ là tập nhãn.
 
-Gọi $\mathcal{P}(\mathcal{X}, \mathcal{Y})$ là mô hình phân bố các điểm $(x, y) \in \mathcal{X} \times \mathcal{Y}$ . Từ $\mathcal{D}$, ta muốn tìm một hàm (model) $h$  "tốt nhất" sao cho: với mỗi $(x, y) \sim \mathcal{P}$ , ta có $h(x) \approx y$, tức là ta muốn tìm cách hiểu rõ $\mathcal{P}$ nhất có thể.  Đây chính là bài toán Supervised Learning.
-Ta sẽ làm rõ hơn ý "tốt nhất" ở phần ngay sau.
-
-Vì số lượng các hàm số đi từ $\mathcal{X}$ đến $\mathcal{Y}$ là rất lớn, nên ta chỉ chọn một số hữu hạn hàm hay lớp hàm mà ta cho rằng là khả thi để tìm kiếm. Ta gọi tập hợp tất cả các hàm khả thi mà ta đã chọn là hypothesis class, ký hiệu là $\mathcal{H}$.
+Gọi $\mathcal{P}(\mathcal{X}, \mathcal{Y})$ là mô hình phân bố các điểm $(x, y) \in \mathcal{X} \times \mathcal{Y}$ . Từ $\mathcal{D}$, ta muốn chọn ra một hàm $h$ sao cho: với mỗi $(x, y) \sim \mathcal{P}$ , ta có $h(x) \approx y$, tức là ta muốn tìm cách hiểu rõ $\mathcal{P}$ nhất có thể.  Đây chính là bài toán Supervised Learning.
 
 Dựa trên tập $\mathcal{Y}$, ta có thể chia bài toán Supervised Learning thành:
 
 |            $\|\mathcal{Y}\| = 2$             |   Binary Classification   |
 |            $\|\mathcal{Y}\| > 2$             | Multilabel Classification |
 | $\mathcal{Y}$ là một khoảng trên tập số thực |        Regression         |
+
+
+Vì số lượng các hàm số đi từ $\mathcal{X}$ đến $\mathcal{Y}$ là rất lớn, nên ta chỉ chọn một số hữu hạn hàm hay lớp hàm mà ta cho rằng là khả thi để tìm kiếm. Ta gọi tập hợp tất cả các hàm khả thi mà ta đã chọn là hypothesis class, ký hiệu là $\mathcal{H}$. Từ đây, ta có thể chọn ra hàm "tốt nhất" trong $\mathcal{H}$. Ta sẽ làm rõ hơn ý "tốt nhất" ở phần ngay sau.
 
 ## 2. Đánh giá độ tốt
 
@@ -104,7 +104,7 @@ Sắp xếp mọi thứ lại theo trật tự, ta có quy trình:
 1. Thu thập data: cần phải đảm bảo data có những tính chất và phân bố phù hợp
 2. Hiểu data: tìm hiểu tốt về data để đưa ra những giả định hợp lý
 3. Chọn hypothesis class: dựa trên những giả định ta đặt ra
-4. Chọn loss function: thường đi kèm với việc chọn thuật toán ở bước 3.
-5. Chia tập data thành 3 tập con $D_{\text{train}}$ , $D_{\text{valid}}$ và $D_{\text{test}}$.
+4. Chọn loss function: dùng khi tập hypothesis class có nhiều hơn 1 phần tử; thường đi kèm với việc chọn thuật toán ở bước 3.
+5. Chia tập data: thành 3 tập con $D_{\text{train}}$ , $D_{\text{valid}}$ và $D_{\text{test}}$.
 6. Lặp lại việc dùng ( $D_{\text{train}}$ , $D_{\text{valid}}$ ) nhiều lần để chọn ra $h$ tốt nhất, từ đó đem ra dùng với tập $D_{\text{test}}$.
 

@@ -12,7 +12,7 @@ description: Series bài viết này tổng hợp những gì mình học đư�
 Ở bài viết đầu tiên, chúng ta sẽ nói rất sơ lược về Machine Learning.
 ## Định nghĩa
 
-Một định nghĩa cho Machine Learning là: “A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.” – (Michell, 2006). Nôm na tức là: “Programs improve in some task with experience.”
+Một định nghĩa cho Machine Learning là: “A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.” – (Mitchell, 2006). Nôm na tức là: “Programs improve in some task with experience.”
 
 Về cách hoạt động của Machine Learning, ta có cách nói dí dỏm:
 
