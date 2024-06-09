@@ -29,3 +29,6 @@ assets/js/dist
 _posts/.obsidian
 _posts/Templates
 _posts/Drafts
+
+#delete favicon
+assets/img/favicons
