@@ -69,15 +69,15 @@ Nhắc lại về giả định mà ta đặt ra khi dùng kNN: những điểm 
 
 Để hiểu hơn về curse of dimensionality, ta hãy bắt đầu với 1-d. Không mất tính tổng quát, giả sử ta có các điểm dữ liệu phân bố đều và độc lập (i.i.d), nằm trên đoạn $[0;1]$. Ở hai đầu biên, ta gọi 2 khoảng $\varepsilon > 0$ như hình dưới là _rìa_.
 
-![curse of 1d dark mod](/Attachments/curse-of-1d(dark).png){: .dark }
-![curse of 1d light mode](/Attachments/curse-of-1d(light).png){: .light }
+![curse of 1d dark mod](https://raw.githubusercontent.com/nhatquang510/media/main/vtqn-blog/Attachments/curse-of-1d(dark).png){: .dark }
+![curse of 1d light mode](https://raw.githubusercontent.com/nhatquang510/media/main/vtqn-blog/Attachments/curse-of-1d(light).png){: .light }
 
 Rõ ràng, xác suất mà điểm dữ liệu đã cho **không nằm ở rìa** là $1-2\varepsilon$. Với $\varepsilon$ rất nhỏ, ta thấy _một cách trực quan_ rằng rất khó để mà data của chúng ta nằm ở rìa.
 
 Giờ hãy xét ở 2-d, khi đó data của chúng ta là i.i.d và nằm ở trong $[0;1]^2$.
 
-![curse of 2d dark mod](/Attachments/curse-of-2d(dark).png){: .dark }
-![curse of 2d light mode](/Attachments/curse-of-2d(light).png){: .light }
+![curse of 2d dark mod](https://raw.githubusercontent.com/nhatquang510/media/main/vtqn-blog/Attachments/curse-of-2d(dark).png){: .dark }
+![curse of 2d light mode](https://raw.githubusercontent.com/nhatquang510/media/main/vtqn-blog/Attachments/curse-of-2d(light).png){: .light }
 
 Ta thấy _một cách trực quan_ rằng có vẻ như xác suất mà data của chúng ta không nằm ở rìa có vẻ hơi giảm đi. Thật vậy, tỉ lệ phần không bị gạch (rìa) với toàn diện tích hình vuông là $(1-2\varepsilon)^2$.
 
@@ -88,8 +88,8 @@ Vậy sẽ như nào nếu số chiều $d$ rất lớn ($d \gg 0$) ? Khi đó, 
 
 Trực quan hơn, ta lấy ví dụ trong không gian 2 chiều tiếp. Giả sử các điểm dữ liệu của ta đều ở biên và phân bố đều. Lấy 1 điểm màu đỏ nằm ở rìa, rõ ràng quá nửa số data nằm xa điểm màu đỏ (bên ngoài đường tròn đỏ)
 
-![metric becomes less meaningfull dark mod](/Attachments/lessmeaning-metric-of-2d(dark).png){: .dark }
-![metric becomes less meaningfull light mode](/Attachments/lessmeaning-metric-of-2d(light).png){: .light }
+![metric becomes less meaningfull dark mod](https://raw.githubusercontent.com/nhatquang510/media/main/vtqn-blog/Attachments/lessmeaning-metric-of-2d(dark).png){: .dark }
+![metric becomes less meaningfull light mode](https://raw.githubusercontent.com/nhatquang510/media/main/vtqn-blog/Attachments/lessmeaning-metric-of-2d(light).png){: .light }
 
 Như vậy, khi $d$ rất lớn, giả định của kNN hoàn toàn bị sụp đổ vì lúc này **khoảng cách trở nên dần không còn ý nghĩa** để phân biệt (cặp điểm nào cũng có khoảng cách giống giống nhau)
 
