@@ -122,9 +122,10 @@ Hãy tham khảo thêm về demo của perceptron ở [đây](https://phiresky.g
 > Nói lại, ta cần cập nhật vector $w$ thành vector $w_{\text{new}} = aw + byx$ với $a, b >0$ nào đó sao cho **sau một số bước thì góc giữa 2 vector $w$ và $yx$ có số đo nhỏ hơn $90^{\circ}$.**  Đấy chính là mấu chốt. Tuy nhiên không phải $a, b$ nào cũng có thể được chọn. Sau đây ta sẽ tìm những bộ thỏa mãn.
 
 Xét điểm $(x, y)$ cố định, và hiện đang bị phân loại chưa đúng. Ta có
-$$w_{\text{new}}^T.(yx) = (aw + byx)^T(yx) = aw^T(yx) + by^2||x||^2$$
 
-Đặt $M = a > 0, \varepsilon = by^2||x||^2 \geq 0$, như vậy ta có thể xét dãy số $(u_n)$ thỏa mãn: $u_0 = w^T(yx) \leq 0$, đồng thời
+$$w_{\text{new}}^T.(yx) = (aw + byx)^T(yx) = aw^T(yx) + by^2||x||_2^2$$
+
+Đặt $M = a > 0$, $\varepsilon = by^2\lVert x \rVert_2^2 \geq 0$, như vậy ta có thể xét dãy số $(u_n)$ thỏa mãn: $u_0 = w^T(yx) \leq 0$, đồng thời
 
 $$
 \begin{equation}
@@ -167,22 +168,22 @@ Ta sẽ chứng minh thuật toán được phát biểu bằng pseudocode ở t
 Giả sử, thuật toán trên không dừng, tức là với mọi số nguyên dương $n$ thì ở lần lặp thứ $n$ luôn tồn tại một điểm $x_n$ bị phân loại sai. Ta gọi $w_0 = 0$ chính là $w$ lúc khởi tạo, gọi $w_n$ là vector pháp tuyến ở ngay lúc bắt đầu vòng lặp thứ $n$ ($n \in \mathbb{N}^*$).
 Khi đó $w_n^T(y_nx_n) \leq 0, , \; \forall n \in \mathbb{N}$. (1)
 
-Vì dữ liệu của chúng ta là linearly separable, nên tồn tại hyperplane có vector pháp tuyến $w_*$ mà phân loại đúng, tức là $w_*^T.(yx) \geq 0, \; \forall (x, y) \in \mathcal{D}$ . (2). Không mất tính tổng quát giả sử $||w_*||_2 = 1$.
+Vì dữ liệu của chúng ta là linearly separable, nên tồn tại hyperplane có vector pháp tuyến $w_c$ mà phân loại đúng, tức là $w_c^T.(yx) \geq 0, \; \forall (x, y) \in \mathcal{D}$ . (2). Không mất tính tổng quát giả sử $\lVert w_c\rVert_2 = 1$.
 
 Ta có $w_{n+1} = w_n + y_nx_n, \; \forall n \in \mathbb{N}$ (3). Chú ý (2), ta được:
 
 $$
 \begin{align*}
-	\forall n \in \mathbb{N}: w_{n+1}^Tw_* &= w_n^Tw_* + w_*^T(y_nx_n) \\
-										   &= w_n^Tw_* + |w_*^T(y_nx_n)| \\
-										   &= w_n^Tw_* + |w_*^Tx_n| \quad (|y_n| = 1) \\
-										   &\geq w_n^Tw_* + \gamma
+	\forall n \in \mathbb{N}: w_{n+1}^Tw_c &= w_n^Tw_c + w_c^T(y_nx_n) \\
+										   &= w_n^Tw_c + |w_c^T(y_nx_n)| \\
+										   &= w_n^Tw_c + |w_c^Tx_n| \quad (|y_n| = 1) \\
+										   &\geq w_n^Tw_c + \gamma
 \end{align*}
 $$
 
-với $\gamma = \min_{(x,y) \in \mathcal{D}} |w_*^Tx| > 0$. Kéo theo $w_n^Tw_* \geq w_0^Tw_* + n\gamma = n\gamma, \; \forall n \in \mathbb{N}$. (4)
+với $\gamma = \min_{(x,y) \in D} \lvert w_c^Tx \rvert > 0$. Kéo theo $w_n^Tw_c \geq w_0^Tw_c + n\gamma = n\gamma, \; \forall n \in \mathbb{N}$. (4)
 
-Mặt khác, ta cũng có $w_n^Tw_* \leq ||w_n||_2.||w_*||_2 = ||w_n||_2, \; \forall n \in \mathbb{N}$ (Cauchy-Schwarz). Vì thế ta sẽ tìm cách đánh giá một cận trên cho $||w_n||_2$.
+Mặt khác, ta cũng có $w_n^Tw_c \leq \lVert w_n \rVert_2.\lVert w_c \rVert_2 = \lVert w_n \rVert_2, \; \forall n \in \mathbb{N}$ (Cauchy-Schwarz). Vì thế ta sẽ tìm cách đánh giá một cận trên cho $\lVert w_n \rVert_2$.
 
 Từ (3) ta cũng có:
 
@@ -195,8 +196,8 @@ $$
 \end{align*}
 $$
 
-với $R = \max_{(x,y) \in \mathcal{D}} ||x||_2 > 0$. Biến đổi dòng thứ 3 là nhờ (1). Từ đây ta suy ra $w_n^2 \leq w_0^2+nR = nR$, kéo theo $||w_n||_2 \leq= \sqrt{nR}$.
-Như vậy $w_n^Tw_* \leq \sqrt{nR}, \; \forall n \in \mathbb{N}$ (5).
+với $R = \max_{(x,y) \in D} ||x||_2 > 0$. Biến đổi dòng thứ 3 là nhờ (1). Từ đây ta suy ra $w_n^2 \leq w_0^2+nR = nR$, kéo theo $||w_n||_2 \leq= \sqrt{nR}$.
+Như vậy $w_n^Tw_c \leq \sqrt{nR}, \; \forall n \in \mathbb{N}$ (5).
 
 Từ (4) và (5), suy ra: $\forall n \in \mathbb{N}: n\gamma \leq \sqrt{nR}$, tương đương với $\forall n \in \mathbb{N}: n \leq \frac{R}{\gamma^2}$(vô lý). Như vậy điều giả sử là sai. Vậy thuật toán sẽ dừng.
 ## Các bài báo có thể đọc thêm
