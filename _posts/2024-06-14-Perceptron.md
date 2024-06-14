@@ -14,7 +14,7 @@ math: true
 
 Perceptron chính là thuật toán machine learning đầu tiên. Nó được lấy cảm hứng từ chức năng của những neuron trong não.
 
-![](https://appliedgo.net/perceptron/media/neuron.png)
+![](https://media.licdn.com/dms/image/D5612AQGBtrdY8vackA/article-cover_image-shrink_720_1280/0/1703985040340?e=2147483647&v=beta&t=G7ixFwJLFYestaSQI_7ANB8LVOjxhPcwBBEuRApRy-w)
 _Minh họa cho Perceptron_
 
 Nôm na, một neuron có thể nhận được tín hiệu từ các neuron khác, và dựa vào đó để ra quyết định là nó sẽ truyền tín hiệu đi hay không. Ở bản _perceptron_ đầu tiên, thuật toán này nhận các số có giá trị là 0 hoặc 1 (nhận được hay không) và cho ra kết quả là 0 hoặc 1 (truyền đi dữ liệu hay không).
@@ -57,6 +57,7 @@ $$\mathcal{D} = \left\{ (x_i, y_i) | x_i \in \mathcal{X}, y_i \in \mathcal{Y}, i
 Dựa trên dataset trên, ta muốn tìm các hệ số $w^{(1)}, w^{(2)}, \dots, w^{(d)}, t$  sao cho:
 
 $$\forall i = \overline{1, n}: x_i^{(1)}w^{(1)} + x_i^{(2)}w^{(2)} + \dots, x_i^{(d)}w^{(d)} \geq t \iff y_i = 1$$
+
 Hay 
 
 $$\forall i = \overline{1, n}: w^Tx_i - t \geq 0 \iff y_i = 1$$[^1]
@@ -166,7 +167,7 @@ Như vậy, trong thuật toán Perceptron, ta chỉ cần chọn $0 < a = M \le
 Ta sẽ chứng minh thuật toán được phát biểu bằng pseudocode ở trên dừng bằng phản chứng.
 
 Giả sử, thuật toán trên không dừng, tức là với mọi số nguyên dương $n$ thì ở lần lặp thứ $n$ luôn tồn tại một điểm $x_n$ bị phân loại sai. Ta gọi $w_0 = 0$ chính là $w$ lúc khởi tạo, gọi $w_n$ là vector pháp tuyến ở ngay lúc bắt đầu vòng lặp thứ $n$ ($n \in \mathbb{N}^*$).
-Khi đó $w_n^T(y_nx_n) \leq 0, , \; \forall n \in \mathbb{N}$. (1)
+Khi đó $w_n^T(y_nx_n) \leq 0, \; \forall n \in \mathbb{N}$. (1)
 
 Vì dữ liệu của chúng ta là linearly separable, nên tồn tại hyperplane có vector pháp tuyến $w_c$ mà phân loại đúng, tức là $w_c^T.(yx) \geq 0, \; \forall (x, y) \in \mathcal{D}$ . (2). Không mất tính tổng quát giả sử $\lVert w_c\rVert_2 = 1$.
 
