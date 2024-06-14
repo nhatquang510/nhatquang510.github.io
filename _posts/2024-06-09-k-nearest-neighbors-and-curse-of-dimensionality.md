@@ -69,6 +69,8 @@ Như vậy, ta đã hiểu khá rõ cách kNN classifier hoạt động.
 Ngoài ra, kNN cũng gặp một vấn đề, là vấn đề chung cho các thuật toán: Curse of Dimensionality.
 ## 2. Curse of Dimensionality (đọc thêm)
 
+### Phần lớn không gian là rỗng
+
 Nhắc lại về giả định mà ta đặt ra khi dùng kNN: những điểm (gần) giống nhau thì có label như nhau. Cụ thể hơn, thước đo cho sự (gần) giống nhau chính là độ gần, đo bằng metric. Tuy nhiên, khi ở trong một không gian rất nhiều chiều, những điểm trong dataset dường như lại không hề gần nhau.
 
 Để hiểu hơn về curse of dimensionality, ta hãy bắt đầu với 1-d. Không mất tính tổng quát, giả sử ta có các điểm dữ liệu phân bố đều và độc lập, nằm trên đoạn $[0;1]$. Ở hai đầu biên, ta gọi 2 khoảng $\varepsilon > 0$ như hình dưới là _rìa_.
@@ -85,17 +87,22 @@ Giờ hãy xét ở 2-d, khi đó data của chúng ta là phân bố đều và
 
 Ta thấy _một cách trực quan_ rằng có vẻ như xác suất mà data của chúng ta không nằm ở rìa có vẻ hơi giảm đi. Thật vậy, tỉ lệ phần không bị gạch (rìa) với toàn diện tích hình vuông là $(1-2\varepsilon)^2$.
 
-Vậy sẽ như nào nếu số chiều $d$ rất lớn ($d \gg 0$) ? Khi đó, xác suất mà data của chúng ta không nằm ở rìa chính là $(1-2\varepsilon)^d \to 0$, tức là phần lớn data sẽ nằm ở rìa.
+Vậy sẽ như nào nếu số chiều $d$ rất lớn ($d \gg 0$) ? Khi đó, xác suất mà data của chúng ta không nằm ở rìa chính là $(1-2\varepsilon)^d \to 0$, tức là **phần lớn data sẽ nằm ở rìa**.
 
-> Hệ quả chính là **_phần lớn_ khoảng cách giữa 2 điểm bất kỳ là rất giống nhau** (đều là khoảng cách từ đầu này đến đầu kia).
+### Sự mất ý nghĩa của khoảng cách
+
+> Hệ quả của việc không gian phần lớn là rỗng chính là **_phần lớn_ khoảng cách giữa 2 điểm bất kỳ là rất giống nhau** (đều là khoảng cách từ đầu này đến đầu kia).
 {: .prompt-danger }
 
-Trực quan hơn, ta lấy ví dụ trong không gian 2 chiều tiếp. Giả sử các điểm dữ liệu của ta đều ở biên và phân bố đều. Lấy 1 điểm màu đỏ nằm ở rìa, rõ ràng quá nửa số data nằm xa điểm màu đỏ (bên ngoài đường tròn đỏ)
+Để hiểu hệ quả trên một cách trực quan quan hơn, ta lấy ví dụ trong không gian 2 chiều tiếp. **Giả sử** các điểm dữ liệu của ta đều ở biên và phân bố đều. Lấy 1 điểm màu đỏ nằm ở rìa, rõ ràng quá nửa số data nằm xa điểm màu đỏ (bên ngoài đường tròn đỏ), tức là quá nửa khoảng cách tới điểm đỏ nằm trong khoảng $[r;\sqrt{2}]$.
 
 ![metric becomes less meaningfull dark mod](https://raw.githubusercontent.com/nhatquang510/media/main/vtqn-blog/Attachments/lessmeaning-metric-of-2d(dark).png){: .dark }
 ![metric becomes less meaningfull light mode](https://raw.githubusercontent.com/nhatquang510/media/main/vtqn-blog/Attachments/lessmeaning-metric-of-2d(light).png){: .light }
 
-Như vậy, khi $d$ rất lớn, giả định của kNN hoàn toàn bị sụp đổ vì lúc này **khoảng cách trở nên dần không còn ý nghĩa** để phân biệt (cặp điểm nào cũng có khoảng cách giống giống nhau)
+Từ ví dụ 2d này, ta hãy nghĩ rằng khi tăng số chiều lên, hiệu ứng này nó sẽ lớn hơn rất nhiều, là **quá nửa số khoảng cách sẽ nằm trong 1 khoảng không gian rất là nhỏ.** Như vậy, khi $d$ rất lớn, giả định của kNN hoàn toàn bị sụp đổ vì lúc này **khoảng cách trở nên dần không còn ý nghĩa** để phân biệt.
+>Ví dụ, bạn ở Hà Nội và 5 người gần nhất với bạn lần lượt ở Hòa Bình, Đà Nẵng và 3 người ở Hồ Chí Minh. Nếu như dùng 5-NN, thì khẳng định rằng bạn giống với 3 người ở HCM là không hợp lý chút nào. 
+
+Dưới đây là biểu đồ minh họa cho sự phân bố của các khoảng cách của một tập dữ liệu phân bố đều trong các không gian.
 
 ![distance when d is large](https://www.cs.cornell.edu/courses/cs4780/2024sp/lectures/images/c2/cursefigure.png)
 _Phân bố khoảng cách giữa 2 cặp điểm khi $d$ lớn_
@@ -117,3 +124,8 @@ _Ví dụ về data nằm trên một manifold_
 Lấy lại ví dụ với tập ảnh hoa oải hương, mỗi hoa oải hương đều có cấu trúc tương tự nhau như cánh hoa nhỏ màu tím nằm thành chùm trên cành xanh dài mảnh, tạo cảm giác nhẹ nhàng, cánh đồng oải hương thì tím bạt ngàn,... Vì thế data của chúng ta sẽ nằm trên một manifold nào đó chứ không phân bố ngẫu nhiên được. Do đó kNN vẫn có thể áp dụng được.
 
 Thật ra, một ý tưởng rất hiển nhiên để giải quyết curse of dimensionality chính là tìm cách giảm số chiều xuống. Có nhiều kỹ thuật để làm điều này và sẽ được bàn trong một (vài) bài viết trong tương lai.
+
+## Đọc thêm:
+
+- [kNN lần đầu được giới thiệu(1951)](https://cs.nyu.edu/~roweis/csc2515-2006/readings/fix_hodges_51.pdf)
+- [được mở rộng thêm (1967)](https://isl.stanford.edu/~cover/papers/transIT/0021cove.pdf)
