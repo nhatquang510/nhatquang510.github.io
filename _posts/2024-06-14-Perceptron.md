@@ -103,14 +103,14 @@ Tóm lại, ta có pseudocode như sau:
 # Perceptron
 w = 0
 while True:
-	isClassified = True
+    isClassified = True
 	
-	for (x_i, y_i) in D:
-		if y_i(x_i.w) <= 0:
-			w = w + y_i * x_i # updating step
-			isClassified = False
+    for (x_i, y_i) in D:
+        if y_i(x_i.w) <= 0:
+            w = w + y_i * x_i # updating step
+            isClassified = False
 	
-	if is Classified == True: break
+    if is Classified == True: break
 ```
 
 Phần chứng minh cho việc **thuật toán này dừng** sẽ được trình bày ở phần sau.
