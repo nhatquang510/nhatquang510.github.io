@@ -52,7 +52,7 @@ Sau đây ta sẽ lần lượt xây dựng vào giải quyết bài toán **Per
 
 ### Phát biểu bài toán
 Cho một dataset 
-$$\mathcal{D} = \left\{ (x_i, y_i) | x_i \in \mathcal{X}, y_i \in \mathcal{Y}, i = \overline{1, n} \right\} $$trong đó $\mathcal{X} \subseteq \mathbb{R}^d,\; \mathcal{Y} = \{ -1, +1 \}$
+$$\mathcal{D} = \left\{ (x_i, y_i) | x_i \in \mathcal{X}, y_i \in \mathcal{Y}, i = \overline{1, n} \right\} $$trong đó $\mathcal{X} \subseteq \mathbb{R}^d,\; \mathcal{Y} = \\{ -1, +1 \\}$
 
 Dựa trên dataset trên, ta muốn tìm các hệ số $w^{(1)}, w^{(2)}, \dots, w^{(d)}, t$  sao cho:
 
@@ -98,7 +98,7 @@ _w* là vector đích, w là vector chúng ta cần điều chỉnh_
 
 Tóm lại, ta có pseudocode như sau:
 
-```{python}
+```python
 # Perceptron
 w = 0
 while True:
