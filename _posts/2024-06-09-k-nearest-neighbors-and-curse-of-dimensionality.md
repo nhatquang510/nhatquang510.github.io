@@ -5,6 +5,7 @@ categories:
   - Machine Learning
 tags:
   - machine_learning
+  - kNN
 author: votaquangnhat
 description: Bài viết này giới thiệu 2 chủ đề. Trước tiên là thuật toán k-nearest neighbors và tập trung chủ yếu về classification. Ngoài ra còn dẫn dắt nói thêm về vấn đề curse of dimensionality
 math: true
@@ -28,7 +29,7 @@ trong đó $\text{mode}(\cdot)$ là hàm chọn ra label có số lần xuất h
 
 Một điểm đáng lưu ý khi sử dụng thuật toán này đó là việc chọn $k$ - gọi là một hyperparameter. Khi chọn $k$ nhỏ, ta có được bias thấp (đánh giá rất sát) và variance cao (nhạy cảm với nhiễu), vì thế rất dễ xảy ra overfitting. Còn khi $k$ lớn thì ngược lại, bias cao (tổng quát hơn) và variance thấp (ít nhạy cảm với nhiễu hơn).
 
-Để trực quan hơn, mình đã viết ra một demo cho kNN ở đây (cập nhật sau khi hoàn thành).
+Để trực quan hơn, hãy xem các demo cho kNN ở [đây](http://sleepyheads.jp/apps/knn/knn.html) hoặc ở [đây](http://vision.stanford.edu/teaching/cs231n-demos/knn/).
 
 Ngoài ra, kNN có một số các tính chất toán học khác, mình sẽ để dành ở một bài viết khác.
 

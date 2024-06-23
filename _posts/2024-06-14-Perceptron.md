@@ -5,6 +5,7 @@ categories:
   - Machine Learning
 tags:
   - machine_learning
+  - Perceptron
 author: votaquangnhat
 description: Bài viết giới thiệu thuật toán Perceptron và từng bước xây dựng thuật toán. Ngoài ra, bài viết còn có các chứng minh một số tính chất liên quan.
 math: true
