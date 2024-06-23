@@ -29,7 +29,7 @@ trong đó $\text{mode}(\cdot)$ là hàm chọn ra label có số lần xuất h
 
 Một điểm đáng lưu ý khi sử dụng thuật toán này đó là việc chọn $k$ - gọi là một hyperparameter. Khi chọn $k$ nhỏ, ta có được bias thấp (đánh giá rất sát) và variance cao (nhạy cảm với nhiễu), vì thế rất dễ xảy ra overfitting. Còn khi $k$ lớn thì ngược lại, bias cao (tổng quát hơn) và variance thấp (ít nhạy cảm với nhiễu hơn).
 
-Để trực quan hơn, hãy xem các demo cho kNN ở [đây](http://sleepyheads.jp/apps/knn/knn.html) hoặc ở [đây](http://vision.stanford.edu/teaching/cs231n-demos/knn/).
+Để trực quan hơn, mình đã viết ra một demo cho kNN ở đây (cập nhật sau khi hoàn thành).
 
 Ngoài ra, kNN có một số các tính chất toán học khác, mình sẽ để dành ở một bài viết khác.
 
