@@ -14,7 +14,7 @@ math: true
 
 Cho trước tập dữ liệu có $n$ phần tử
 $$\mathcal{D} = \left\{ (x_i, y_i) | x_i \in \mathcal{X}, y_i \in \mathcal{Y}, i = \overline{1, n} \right\} $$trong đó:
-- $\mathcal{X}$ là một không gian $d$ chiều, được gọi là feature space. $x_i$ được gọi là một feature.
+- $\mathcal{X}$ là một không gian $d$ chiều, được gọi là feature space. $x_i$ được gọi là một feature vector, gồm các features.
 - $\mathcal{Y}$ là tập nhãn.
 
 Gọi $\mathcal{P}(\mathcal{X}, \mathcal{Y})$ là mô hình phân bố các điểm $(x, y) \in \mathcal{X} \times \mathcal{Y}$ . Từ $\mathcal{D}$, ta muốn chọn ra một hàm $h$ sao cho: với mỗi $(x, y) \sim \mathcal{P}$ , ta có $h(x) \approx y$, tức là ta muốn tìm cách hiểu rõ $\mathcal{P}$ nhất có thể.  Đây chính là bài toán Supervised Learning.
